@@ -34,6 +34,32 @@ body {
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Ensure content doesn't hide behind navbar */
+body {
+    padding-top: 70px;
+}
+
+/* Fix for mobile skills section visibility */
+.skills {
+    background: white !important;
+    position: relative !important;
+    z-index: 10 !important;
+    min-height: 100vh;
+}
+
+.skills-grid {
+    position: relative !important;
+    z-index: 11 !important;
+}
+
+.skill-category {
+    position: relative !important;
+    z-index: 12 !important;
+    background: #f8f9fa !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -468,12 +494,16 @@ section {
 /* Skills Section */
 .skills {
     background: white;
+    position: relative;
+    z-index: 1;
 }
 
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    position: relative;
+    z-index: 2;
 }
 
 .skill-category {
@@ -482,6 +512,8 @@ section {
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    position: relative;
+    z-index: 3;
 }
 
 .skill-category:hover {
@@ -771,6 +803,33 @@ section {
 
     .skills-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .skill-category {
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .skill-items {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 0.8rem;
+    }
+    
+    /* Additional mobile fixes for skills */
+    .skills {
+        background: white !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
+    
+    .skill-category {
+        background: #f8f9fa !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
     }
 
     .about-stats {
