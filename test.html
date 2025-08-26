@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Portfolio Files</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div style="padding: 50px; text-align: center;">
+        <h1 style="color: #667eea;">Portfolio Test</h1>
+        <p>If you see this styled text, CSS is working!</p>
+        <button onclick="testJS()" style="background: #667eea; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+            Test JavaScript
+        </button>
+        <div id="result" style="margin-top: 20px;"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function testJS() {
+            document.getElementById('result').innerHTML = 'JavaScript is working! ✅';
+        }
+    </script>
+</body>
+</html>
