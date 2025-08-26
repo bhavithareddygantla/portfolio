@@ -64,11 +64,11 @@ document.querySelectorAll('.project-card').forEach((card, index) => {
     observer.observe(card);
 });
 
-// Observe skill items for staggered animation
-document.querySelectorAll('.skill-item').forEach((item, index) => {
-    item.style.animationDelay = `${index * 0.05}s`;
-    observer.observe(item);
-});
+// Observe skill items for staggered animation - DISABLED for mobile fix
+// document.querySelectorAll('.skill-item').forEach((item, index) => {
+//     item.style.animationDelay = `${index * 0.05}s`;
+//     observer.observe(item);
+// });
 
 // Typing effect for hero title
 function typeWriter(element, text, speed = 100) {
@@ -226,20 +226,25 @@ function showNotification(message, type) {
     }, 5000);
 }
 
-// Skill progress animation
+// Skill progress animation - DISABLED for mobile fix
 function animateSkills() {
     const skillItems = document.querySelectorAll('.skill-item');
     skillItems.forEach((item, index) => {
-        setTimeout(() => {
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
-        }, index * 100);
+        // Force visibility immediately
+        item.style.opacity = '1';
+        item.style.transform = 'translateY(0)';
+        item.style.visibility = 'visible';
+        item.style.display = 'flex';
     });
 }
 
-// Trigger skill animation when skills section is visible
+// Trigger skill animation when skills section is visible - IMMEDIATE for mobile fix
 const skillsSection = document.querySelector('.skills');
 if (skillsSection) {
+    // Force skills to be visible immediately
+    animateSkills();
+    
+    // Also observe for intersection as backup
     const skillsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -247,7 +252,7 @@ if (skillsSection) {
                 skillsObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.1 });
     
     skillsObserver.observe(skillsSection);
 }
